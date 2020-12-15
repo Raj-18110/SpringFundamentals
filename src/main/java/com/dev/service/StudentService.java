@@ -15,6 +15,10 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
+    public void beforeCreation(){
+        System.out.println("Before Creation method is called from Service Class");
+    }
+
     public void setStudentRepository(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }

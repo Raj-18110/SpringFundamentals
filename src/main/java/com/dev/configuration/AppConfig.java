@@ -12,22 +12,13 @@ import java.util.List;
 @Configuration
 public class AppConfig {
 
-    @Bean
-    public List<Student> studentList(){
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("Sunny",1));
-        students.add(new Student("Pinky",2));
-        students.add(new Student("Bunny",3));
-        return students;
-    }
-
-    @Bean
+    @Bean(initMethod = "beforeCreation",destroyMethod = "beforeCreation")
     public StudentService studentService(){
         return new StudentService(studentRepository());
     }
 
-    @Bean
+    @Bean(initMethod = "studentData",destroyMethod = "deleteStudentData")
     public StudentRepository studentRepository(){
-        return new StudentRepository(studentList());
+        return new StudentRepository();
     }
 }
