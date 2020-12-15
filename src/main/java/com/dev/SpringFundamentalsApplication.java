@@ -8,15 +8,11 @@ import org.springframework.context.annotation.ComponentScan;
 public class SpringFundamentalsApplication {
 
 	public static void main(String[] args) {
-
-		//ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
 		configApplicationContext.register(AppConfig.class);
 		configApplicationContext.refresh();
 		StudentService service = configApplicationContext.getBean(StudentService.class);
 		System.out.println(service.findAll());
-
-
 	}
 
 }

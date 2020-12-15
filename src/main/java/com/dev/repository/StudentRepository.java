@@ -1,15 +1,14 @@
 package com.dev.repository;
-
 import com.dev.model.Student;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository {
+    private List<Student> students;
 
-
-    public List<Student> students;
+    public StudentRepository(List<Student> students) {
+        this.students = students;
+    }
 
     public void setStudents(List<Student> students) {
         this.students = students;

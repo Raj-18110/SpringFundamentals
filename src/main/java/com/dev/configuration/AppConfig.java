@@ -4,7 +4,6 @@ import com.dev.model.Student;
 import com.dev.repository.StudentRepository;
 import com.dev.service.StudentService;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
@@ -24,15 +23,11 @@ public class AppConfig {
 
     @Bean
     public StudentService studentService(){
-        StudentService studentService = new StudentService();
-        studentService.setStudentRepository(studentRepository());
-        return studentService;
+        return new StudentService(studentRepository());
     }
 
     @Bean
     public StudentRepository studentRepository(){
-        StudentRepository studentRepository = new StudentRepository();
-        studentRepository.setStudents(studentList());
-        return studentRepository;
+        return new StudentRepository(studentList());
     }
 }
