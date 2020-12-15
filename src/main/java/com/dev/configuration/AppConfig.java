@@ -6,18 +6,28 @@ import com.dev.service.StudentService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
 public class AppConfig {
 
-    @Bean(initMethod = "beforeCreation",destroyMethod = "beforeCreation")
-    public StudentService studentService(){
-        return new StudentService(studentRepository());
+    @Bean
+    public List<Student> studentData(){
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Sunny",1));
+        students.add(new Student("Pinky",2));
+        students.add(new Student("Bunny",3));
+        return students;
     }
 
-    @Bean(initMethod = "studentData",destroyMethod = "deleteStudentData")
+    @Bean
+    public StudentService studentService(){
+        return new StudentService();
+    }
+
+    @Bean
     public StudentRepository studentRepository(){
         return new StudentRepository();
     }

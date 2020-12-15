@@ -11,14 +11,7 @@ public class StudentService {
 
     private StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
-
-    public void beforeCreation(){
-        System.out.println("Before Creation method is called from Service Class");
-    }
-
+    @Autowired
     public void setStudentRepository(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
